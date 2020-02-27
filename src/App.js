@@ -23,7 +23,7 @@ class App extends Component {
     e.preventDefault();
     console.log("clicked")
     axios({
-      url: 'http://api.giphy.com/v1/gifs/search',
+      url: 'https://api.giphy.com/v1/gifs/search',
       type: 'GET',
       data: 'json',
       params: {
@@ -43,7 +43,7 @@ class App extends Component {
 
   componentDidMount() {
     axios({
-      url: 'http://api.giphy.com/v1/gifs/trending',
+      url: 'https://api.giphy.com/v1/gifs/trending',
       type: 'GET',
       data: 'json',
       params: {
