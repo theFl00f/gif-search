@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.scss';
+import './sass/App.scss';
 import axios from 'axios';
 
 class App extends Component {
@@ -61,33 +61,37 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>INSERT CREATIVE GIF SEARCH NAME c:</h1>
+        <div className="wrapper">
+        <h1>Find That GIF!</h1>
         <form onSubmit={this.handleFormSubmit} action="submit">
           <label htmlFor="gifSearch">enter a keyword to get started!</label>
           <input onChange={this.handleChange} id="gifSearch" type="text" placeholder="enter keyword here"/>
           <button type="submit">Search!</button>
         </form>
-          <ul className="featuredGifs">
-            {
-              this.state.page === 'trending' ? 
-              (this.state.featuredGifs.map(({ id, images, title }, index) => {
-                  return (
-                    <li key={id} className="featuredGif">
-                      <img src={images.original.url} alt={title}/>
-                    </li>
-                  )
-                })
-              ) 
-              :
-              (this.state.searchResult.map(({ id, images, title }, index) => {
+        <ul className="featuredGifs">
+          {
+            this.state.page === 'trending' ? 
+            (this.state.featuredGifs.map(({ id, images, title, url }, index) => {
                 return (
                   <li key={id} className="featuredGif">
-                    <img src={images.original.url} alt={title}/>
+                    <a href={url}>
+                      <img src={images.original.url} alt={title}/>
+                    </a>
                   </li>
                 )
-              }))
-            }
-          </ul>
+              })
+            ) 
+            :
+            (this.state.searchResult.map(({ id, images, title }, index) => {
+              return (
+                <li key={id} className="featuredGif">
+                  <img src={images.original.url} alt={title}/>
+                </li>
+              )
+            }))
+          }
+        </ul>
+        </div>
       </div>
     );
   }
