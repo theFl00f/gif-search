@@ -74,7 +74,7 @@ class App extends Component {
               (this.state.featuredGifs.map(({ id, images, title, url }, index) => {
                   return (
                     <li key={id} className="featuredGif">
-                      <a href={url} target="_blank">
+                      <a href={url} target="_blank" rel="noopener noreferrer">
                         <img src={images.original.url} alt={title}/>
                       </a>
                     </li>
@@ -87,7 +87,7 @@ class App extends Component {
                 this.state.searchResult.slice(0, 6).map(({ id, images, title, url }, index) => {
                 return (
                   <li key={id} className="featuredGif">
-                    <a href={url} target="_blank">
+                    <a href={url} target="_blank" rel="noopener noreferrer">
                       <img src={images.original.url} alt={title}/>
                     </a>
                   </li>
