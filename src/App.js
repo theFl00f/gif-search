@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './sass/App.scss';
 import axios from 'axios';
+import Form from './Form'
+import FeaturedGifs from './FeaturedGifs';
+import Footer from './Footer'
+import Header from './Header'
 
 class App extends Component {
   constructor() {
@@ -58,46 +62,29 @@ class App extends Component {
     })
   }
 
+  restart = () => {
+    this.setState ({
+      page: 'trending'
+    })
+  }
+
   render() {
     return (
       <div className={`App ${this.state.page}`}>
         <div className="wrapper">
-          <h1>Find That GIF!</h1>
-          <form onSubmit={this.handleFormSubmit} action="submit">
-            <label htmlFor="gifSearch">enter a keyword to get started!</label>
-            <input onChange={this.handleChange} id="gifSearch" type="text" placeholder="enter keyword here"/>
-            <button type="submit">Search!</button>
-          </form>
-          <ul className="featuredGifs">
-            {
-              this.state.page === 'trending' ? 
-              (this.state.featuredGifs.map(({ id, images, title, url }, index) => {
-                  return (
-                    <li key={id} className="featuredGif">
-                      <a href={url} target="_blank" rel="noopener noreferrer">
-                        <img src={images.original.url} alt={title}/>
-                      </a>
-                    </li>
-                  )
-                })
-              ) 
-              :
-
-              (
-                this.state.searchResult.slice(0, 6).map(({ id, images, title, url }, index) => {
-                return (
-                  <li key={id} className="featuredGif">
-                    <a href={url} target="_blank" rel="noopener noreferrer">
-                      <img src={images.original.url} alt={title}/>
-                    </a>
-                  </li>
-                )
-              }))
-            }
-          </ul>
-          <footer>
-            <p>Celeste Ellerby 2020, powered by GIPHY</p>
-          </footer>
+          <Header 
+            restart={this.restart}
+          />
+          <Form 
+            handleChange={this.handleChange}
+            handleFormSubmit={this.handleFormSubmit}
+          />
+          <FeaturedGifs 
+            page={this.state.page} 
+            featuredGifs={this.state.featuredGifs} 
+            searchResult={this.state.searchResult}
+          />
+          <Footer />
         </div>
       </div>
     );
