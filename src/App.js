@@ -45,7 +45,7 @@ class App extends Component {
     axios({
       url: 'https://api.giphy.com/v1/gifs/trending',
       type: 'GET',
-      data: 'json',
+      responseType: 'json',
       params: {
         api_key: 'IcOIA7uzXjoJB4UpdoRW2d6pCcJlgqzW',
         dataType: 'json',
@@ -60,37 +60,44 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className={`App ${this.state.page}`}>
         <div className="wrapper">
-        <h1>Find That GIF!</h1>
-        <form onSubmit={this.handleFormSubmit} action="submit">
-          <label htmlFor="gifSearch">enter a keyword to get started!</label>
-          <input onChange={this.handleChange} id="gifSearch" type="text" placeholder="enter keyword here"/>
-          <button type="submit">Search!</button>
-        </form>
-        <ul className="featuredGifs">
-          {
-            this.state.page === 'trending' ? 
-            (this.state.featuredGifs.map(({ id, images, title, url }, index) => {
+          <h1>Find That GIF!</h1>
+          <form onSubmit={this.handleFormSubmit} action="submit">
+            <label htmlFor="gifSearch">enter a keyword to get started!</label>
+            <input onChange={this.handleChange} id="gifSearch" type="text" placeholder="enter keyword here"/>
+            <button type="submit">Search!</button>
+          </form>
+          <ul className="featuredGifs">
+            {
+              this.state.page === 'trending' ? 
+              (this.state.featuredGifs.map(({ id, images, title, url }, index) => {
+                  return (
+                    <li key={id} className="featuredGif">
+                      <a href={url} target="_blank">
+                        <img src={images.original.url} alt={title}/>
+                      </a>
+                    </li>
+                  )
+                })
+              ) 
+              :
+
+              (
+                this.state.searchResult.slice(0, 6).map(({ id, images, title, url }, index) => {
                 return (
                   <li key={id} className="featuredGif">
-                    <a href={url}>
+                    <a href={url} target="_blank">
                       <img src={images.original.url} alt={title}/>
                     </a>
                   </li>
                 )
-              })
-            ) 
-            :
-            (this.state.searchResult.map(({ id, images, title }, index) => {
-              return (
-                <li key={id} className="featuredGif">
-                  <img src={images.original.url} alt={title}/>
-                </li>
-              )
-            }))
-          }
-        </ul>
+              }))
+            }
+          </ul>
+          <footer>
+            <p>Celeste Ellerby 2020, powered by GIPHY</p>
+          </footer>
         </div>
       </div>
     );

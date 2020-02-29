@@ -1,0 +1,90 @@
+body {
+    height: 100vh;
+    min-height: 48rem;
+    padding: 2% 0;
+    background-color: $primaryColor;
+}
+
+div {
+    height: 100%;
+}
+
+.wrapper {
+    min-height: 45rem;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+    background-color: $secondaryAccent;
+    padding-bottom: 10%;
+    position: relative;
+}
+
+h1 {
+    padding: 2.5% 0;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 30%;
+    min-height: 15rem;
+    justify-content: space-evenly;
+    
+}
+
+input {
+    padding: 1.5% 8%;
+    background: $black;
+}
+
+button {
+    padding: 1% 7.5%;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 95%;
+    background: $black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.trending {
+
+    ul {
+        display: flex;
+        overflow: hidden;
+        max-height: 300px;
+        min-height: 16rem;
+        background-color: $black;
+    }
+
+
+    li {
+        min-height: 100%;
+        transform: translate3d(0, 0, 0  );
+        animation: gallerySlide 275s infinite linear
+    }
+
+    @keyframes gallerySlide {
+        0% {transform: translateX(0);}
+        100% {transform: translateX(-9250px)}
+    }
+
+    li a {
+        display: flex;
+        height: 100%;
+    }
+
+    img {
+        object-fit: cover;
+        padding: 1rem;
+    }
+}

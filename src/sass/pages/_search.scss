@@ -1,0 +1,35 @@
+.search {
+    min-height: 70rem;
+    .wrapper {
+        max-height: 68rem;
+    }
+    form {
+        max-height: 20rem;
+    }
+    ul {
+        display: flex;
+        flex-flow: row wrap;
+        max-width: 100%;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        align-content: space-around;
+    }
+
+    li {
+        width: 28%;
+        height: 20rem;
+        padding: 1%;
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        img {
+            object-fit: contain;
+            object-position: center;
+            text-align: center;
+            height: 100%;
+        }
+    }
+}
