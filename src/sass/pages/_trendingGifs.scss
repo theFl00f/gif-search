@@ -13,7 +13,6 @@ div {
     min-height: 45rem;
     display: flex;
     flex-direction: column;
-    // justify-content: space-between;
     background-color: $secondaryAccent;
     padding-bottom: 10%;
     position: relative;
@@ -32,6 +31,9 @@ form {
     min-height: 15rem;
     justify-content: space-evenly;
     
+    button {
+        padding: 1% 7.5%;
+    }
 }
 
 input {
@@ -39,9 +41,6 @@ input {
     background: $black;
 }
 
-button {
-    padding: 1% 7.5%;
-}
 
 footer {
     position: absolute;
@@ -55,22 +54,58 @@ footer {
     align-items: center;
 }
 
+li {
+    position: relative;
+}
+
+.icons {
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    right: 80%;
+    bottom: 90%;
+    display: flex;
+    flex-direction: column;
+    filter: opacity(0.7);
+    height: unset;
+}
+
+.trending .icons a,
+.search .icons a {
+    height: unset;
+    text-align: left;
+}
+
+.search .icons a
+
+.icon {
+    margin: 5%;
+}
+
 
 .trending {
 
-    ul {
-        display: flex;
-        overflow: hidden;
-        max-height: 300px;
+    .featuredGifsContainer {
         min-height: 16rem;
+        width: 100%;
         background-color: $black;
+        max-height: 300px;
+        overflow: hidden;
+    }
+
+    ul {
+        height: 100%;
+        display: flex;
+        animation: gallerySlide 275s infinite linear;
+        &:hover {
+            animation-play-state: paused;
+        }
     }
 
 
     li {
         min-height: 100%;
         transform: translate3d(0, 0, 0  );
-        animation: gallerySlide 275s infinite linear
     }
 
     @keyframes gallerySlide {
@@ -85,6 +120,7 @@ footer {
 
     img {
         object-fit: cover;
-        padding: 1rem;
+        margin: 1rem;
+        height: 88%;
     }
 }

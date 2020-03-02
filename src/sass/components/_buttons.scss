@@ -1,0 +1,20 @@
+.icons {
+    .icon {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+    button {
+        background: none;
+        width: none;
+        border: none;
+        text-align: center;
+        cursor: pointer;
+    }
+}
+
+.modal {
+    button {
+        color: $black;
+    }
+}

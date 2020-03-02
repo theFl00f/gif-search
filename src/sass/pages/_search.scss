@@ -19,17 +19,16 @@
         width: 28%;
         height: 20rem;
         padding: 1%;
-        a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
+        display: flex;
         img {
-            object-fit: contain;
-            object-position: center;
+            object-fit: scale-down;
+            object-position: top;
             text-align: center;
             height: 100%;
+            width: 100%;
         }
+    }
+    .icons {
+        left: 10%;
     }
 }
