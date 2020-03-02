@@ -3,22 +3,6 @@ import FeaturedGif from './FeaturedGif'
 import SearchGif from './SearchGif'
 
 class FeaturedGifs extends Component {
-
-    //put in own component for images?
-    // constructor(props) {
-    //     super(props);
-    //     this.handleMouseHover = this.handleMouseHover.bind(this)
-    //     this.state = {
-    //         isHovering: false
-    //     }
-    // }
-
-    // handleMouseHover = () => {
-    //     this.setState({
-    //         isHovering: !this.state.isHovering
-    //     })
-    // }
-
     render() {
         return (
             <div className="featuredGifsContainer">
@@ -46,24 +30,6 @@ class FeaturedGifs extends Component {
                                 alt={title}
                                 url={url}
                             />
-
-                            // <li 
-                            //     key={id} 
-                            //     className="featuredGif"
-                            //     onMouseEnter={this.handleMouseHover}
-                            //     onMouseLeave={this.handleMouseHover}
-                            // >
-                            //     <img 
-                            //         src={images.original.url} 
-                            //         alt={title}
-                            //     />
-                            //     {
-                            //         this.state.isHovering &&
-                            //         <GifHover 
-                            //             url={url}
-                            //         />
-                            //     }
-                            // </li>
                         )
                         }))
                     }
