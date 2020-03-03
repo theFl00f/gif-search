@@ -7,7 +7,7 @@ class Header extends Component {
         return (
         <button 
             className="header"
-            onClick={ this.props.restart }
+            onClick={this.props.restart}
         >
             <h1>Find That GIF!</h1>
         </button>

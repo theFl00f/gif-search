@@ -5,6 +5,7 @@ import Form from './Form'
 import FeaturedGifs from './FeaturedGifs';
 import Footer from './Footer'
 import Header from './Header'
+import SearchButton from './SearchButton'
 
 class App extends Component {
   constructor() {
@@ -13,9 +14,18 @@ class App extends Component {
       featuredGifs: [],
       userInput: '',
       page: 'trending',
-      searchResult: []
+      searchResult: [],
+      visible: 6
     }
+    this.getMoreGifs = this.getMoreGifs.bind(this)
   }
+
+
+getMoreGifs = () => {
+    this.setState((prev) => {
+        return {visible: prev.visible + 6}
+    }) 
+}
 
   handleChange = (e) => {
     this.setState({
@@ -34,13 +44,13 @@ class App extends Component {
         api_key: 'IcOIA7uzXjoJB4UpdoRW2d6pCcJlgqzW',
         dataType: 'json',
         q: this.state.userInput,
-        lang: 'en'
+        lang: 'en',
+        limit: 100
       }
     }).then((result) => {
-      console.log(result.data.data)
       this.setState({
         page: 'search',
-        searchResult: result.data.data
+        searchResult: result.data.data,
       })
     })
   }
@@ -83,6 +93,11 @@ class App extends Component {
             page={this.state.page} 
             featuredGifs={this.state.featuredGifs} 
             searchResult={this.state.searchResult}
+            visible={this.state.visible}
+          />
+          <SearchButton 
+            page={this.state.page}
+            getMoreGifs={this.getMoreGifs}
           />
           <Footer />
         </div>

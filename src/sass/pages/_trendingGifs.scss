@@ -39,6 +39,18 @@ form {
 input {
     padding: 1.5% 8%;
     background: $black;
+    border-radius: .5rem;
+    border: outset 2px $secondaryAccent;
+}
+
+::selection {
+    background-color: $secondaryColor;
+    color: $black;
+}
+
+input, 
+textarea {
+    caret-color: $primaryAccent;
 }
 
 
@@ -47,11 +59,12 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    top: 95%;
     background: $black;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 3rem;
+
 }
 
 li {
@@ -60,14 +73,17 @@ li {
 
 .icons {
     position: absolute;
-    top: 10%;
-    left: 25%;
-    right: 80%;
-    bottom: 90%;
+    top: 20%;
+    left: 15%;
+    bottom: 80%;
     display: flex;
     flex-direction: column;
     filter: opacity(0.7);
     height: unset;
+    &:focus-within,
+    &:hover {
+        filter: opacity(0.8)
+    }
 }
 
 .trending .icons a,
@@ -75,8 +91,6 @@ li {
     height: unset;
     text-align: left;
 }
-
-.search .icons a
 
 .icon {
     margin: 5%;

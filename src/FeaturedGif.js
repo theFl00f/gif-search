@@ -20,7 +20,7 @@ class FeaturedGif extends Component {
     render() {
         return(
             <li 
-                key={this.props.key} 
+                key={this.props.id} 
                 className="featuredGif"
                 onMouseEnter={this.handleMouseHover}
                 onMouseLeave={this.handleMouseHover}

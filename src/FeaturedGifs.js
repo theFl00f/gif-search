@@ -3,6 +3,9 @@ import FeaturedGif from './FeaturedGif'
 import SearchGif from './SearchGif'
 
 class FeaturedGifs extends Component {
+
+
+    
     render() {
         return (
             <div className="featuredGifsContainer">
@@ -22,16 +25,17 @@ class FeaturedGifs extends Component {
                         ) 
                         :
                         (
-                        this.props.searchResult.slice(0, 6).map(({ id, images, title, url }, index) => {
-                        return (
-                            <SearchGif 
-                                key={id}
-                                src={images.original.url}
-                                alt={title}
-                                url={url}
-                            />
+                        this.props.searchResult.slice(0, this.props.visible).map(({ id, images, title, url }, index) => {
+                            return (
+                                <SearchGif 
+                                    key={id}
+                                    src={images.original.url}
+                                    alt={title}
+                                    url={url}
+                                />
+                            )
+                        })
                         )
-                        }))
                     }
                 </ul>
             </div>

@@ -1,9 +1,23 @@
 .icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     .icon {
+        background-color: $secondaryAccent;
+        border-radius: .5rem;
+        display: flex;
+        min-width: 2rem;
+        padding: 25%;
         display: flex;
         justify-content: center;
-        align-content: center;
+        align-items: center;
+        min-height: 2rem;
     }
+}
+
+button {
+    cursor: pointer;
 }
 
 .icons button,
@@ -12,11 +26,43 @@ button.header {
     width: none;
     border: none;
     text-align: center;
-    cursor: pointer;
 }
 
 .modal {
+    position: relative;
     button {
+        color: $white;
+        position: absolute;
+        bottom: 0%;
+        right: 0%;
+        left: 0%;
+        min-width: 4rem;
+        min-height: 3rem;
+        transition: color .5s ease-out;
+        &:focus-within,
+        &:hover {
+            color: $secondaryColor;
+        }
+    }
+}
+
+.load {
+    margin-top: 5%;
+    align-self: center;
+    padding: 1% 10%;
+}
+
+form button,
+.load {
+
+    background-color: $black;
+    color: $secondaryColor;
+    border-radius: .5rem;
+    border-color: $secondaryAccent;
+    transition: color, background-color .5s ease-out;
+    &:focus-within,
+    &:hover {
+        background-color: $primaryAccent;
         color: $black;
     }
 }

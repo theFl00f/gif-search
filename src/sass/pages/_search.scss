@@ -1,7 +1,10 @@
 .search {
-    min-height: 70rem;
+    min-height: 80rem;
+    height: auto !important;
     .wrapper {
-        max-height: 68rem;
+        // max-height: 78rem;
+        height: auto !important;
+        margin-bottom: 3%;
     }
     form {
         max-height: 20rem;

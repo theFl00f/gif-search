@@ -21,6 +21,11 @@ h1 {
     font-size: 3.6rem;
     color: $white;
     background: $black;
+    transition: color .5s ease-out;
+    &:focus-within,
+    &:hover {
+        color: $secondaryColor;
+    }
 }
 
 input {
@@ -29,6 +34,11 @@ input {
 
 .icon {
     font-size: 1.5rem;
-    color: $primaryAccent;
+    color: $primaryColor;
+    transition: color .5s ease-out;
+    &:focus-within,
+    &:hover {
+        color: $secondaryColor;
+    }
 }
 

@@ -1,3 +1,18 @@
 .modal {
     height: unset;
+    position: absolute;
+    left: 2.5rem;
+    top: -2rem;
+}
+
+textarea {
+    padding: 1.5%;
+    resize: none;
+    background: $black;
+    color: $primaryAccent;
+    border: 2px outset $secondaryAccent;
+    border-radius: .5rem;
+    &:focus-within {
+        border-color: $secondaryColor;
+    }
 }
