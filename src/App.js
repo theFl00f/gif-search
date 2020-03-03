@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './sass/App.scss';
 import axios from 'axios';
 import Form from './Form'
 import FeaturedGifs from './FeaturedGifs';
-import Footer from './Footer'
-import Header from './Header'
-import SearchButton from './SearchButton'
+import Footer from './Footer';
+import Header from './Header';
+import SearchButton from './SearchButton';
+import swal from 'sweetalert';
 
 class App extends Component {
   constructor() {
@@ -15,10 +16,13 @@ class App extends Component {
       userInput: '',
       page: 'trending',
       searchResult: [],
-      visible: 6
+      visible: 6,
+      loading: true,
+      error: false
     }
     this.getMoreGifs = this.getMoreGifs.bind(this)
   }
+
 
 
 getMoreGifs = () => {
@@ -34,8 +38,16 @@ getMoreGifs = () => {
   }
 
   handleFormSubmit = (e) => {
+    this.state.userInput === ''?
+    swal('please enter something to look for!', {
+      button: 'fine....'
+    })
+    :
+    this.setState({
+      loading: true,
+      error: false
+    })
     e.preventDefault();
-    console.log("clicked")
     axios({
       url: 'https://api.giphy.com/v1/gifs/search',
       type: 'GET',
@@ -48,14 +60,25 @@ getMoreGifs = () => {
         limit: 100
       }
     }).then((result) => {
+      console.log(this.state.searchResult.length)
       this.setState({
         page: 'search',
+        loading: false,
         searchResult: result.data.data,
+      }, () => {
+        if (this.state.searchResult.length===0) {
+          this.setState({
+            error: true
+          })
+        }
       })
-    })
-  }
+    });
+  };
 
   componentDidMount() {
+    this.setState({
+      loading: true
+    })
     axios({
       url: 'https://api.giphy.com/v1/gifs/trending',
       type: 'GET',
@@ -67,7 +90,8 @@ getMoreGifs = () => {
       }
     }).then((result) => {
       this.setState({
-        featuredGifs: result.data.data
+        featuredGifs: result.data.data,
+        loading: false
       })
     })
   }
@@ -89,16 +113,28 @@ getMoreGifs = () => {
             handleChange={this.handleChange}
             handleFormSubmit={this.handleFormSubmit}
           />
-          <FeaturedGifs 
-            page={this.state.page} 
-            featuredGifs={this.state.featuredGifs} 
-            searchResult={this.state.searchResult}
-            visible={this.state.visible}
-          />
-          <SearchButton 
-            page={this.state.page}
-            getMoreGifs={this.getMoreGifs}
-          />
+          {
+            this.state.loading? 
+            <div className="lds-circle">
+              <div>{/* preloader from loading.io released under CC0 Licence */}</div>
+            </div>
+            :
+            <Fragment>
+              <FeaturedGifs 
+                page={this.state.page} 
+                featuredGifs={this.state.featuredGifs} 
+                searchResult={this.state.searchResult}
+                visible={this.state.visible}
+              />
+              {this.state.error? 
+              <p>no results found. :c</p>
+              :
+              <SearchButton 
+                page={this.state.page}
+                getMoreGifs={this.getMoreGifs}
+              />}
+            </Fragment>
+          }
           <Footer />
         </div>
       </div>
