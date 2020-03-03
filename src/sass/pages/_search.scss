@@ -23,6 +23,12 @@
         height: 20rem;
         padding: 1%;
         display: flex;
+        @media(max-width: 850px) {
+            width: 45%
+        }
+        @media (max-width: 550px) {
+            width: 80%
+        }
         img {
             object-fit: scale-down;
             object-position: top;
