@@ -1,1 +1,1 @@
-celesteellerby.com/gif-search
+www.celesteellerby.com/gif-search
