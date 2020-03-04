@@ -13,7 +13,11 @@
         justify-content: center;
         align-items: center;
         min-height: 2rem;
+        border: .05px solid $primaryColor;
     }
+}
+.search .icons .icon {
+    background-color: $primaryAccent;
 }
 
 button {

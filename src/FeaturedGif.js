@@ -6,12 +6,22 @@ class FeaturedGif extends Component {
     constructor(props) {
         super(props);
         this.handleMouseHover = this.handleMouseHover.bind(this)
+        window.matchMedia('(max-width: 850px)').matches?
+        this.state = {
+            isHovering: true
+        }
+        :
         this.state = {
             isHovering: false
         }
     }
 
     handleMouseHover = () => {
+        window.matchMedia('(max-width: 850px)').matches?
+        this.setState({
+            isHovering: true
+        })
+        :
         this.setState({
             isHovering: !this.state.isHovering
         })
